@@ -1,24 +1,28 @@
 // Fetches json data and prints result.
 
-import axios from 'axios';
+import axios from 'axios'
 
-const url = `https://jsonplaceholder.typicode.com/todos/1`;
+const url = `https://jsonplaceholder.typicode.com/todos/1`
 
 interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
+  id: number
+  title: string
+  completed: boolean
 }
 
 axios.get(url).then(response => {
-  const todo = response.data as Todo;
+  const todo = response.data as Todo
 
-  const ID = todo.id;
-  const title = todo.title;
-  const finished = todo.completed;
+  const id = todo.id
+  const title = todo.title
+  const completed = todo.completed
 
+  logTodo(id, completed, title)
+})
+
+const logTodo = (id: number, title: string, completed: boolean) => {
   console.log(`
-  The Todo with ID: ${ID}
+  The Todo with ID: ${id}
   has a title of: ${title},
-  is it finished? ${finished}`);
-});
+  is it finished? ${completed}`)
+}
