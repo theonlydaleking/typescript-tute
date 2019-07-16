@@ -56,7 +56,7 @@ let numberAboveZero = false
 // try and assign the number to numberAboveZero else, assign false.
 numbers.forEach(element => {
   if (element > 0) {
-    numberAboveZero = element
+    numberAboveZeroA = element
   }
 })
 
