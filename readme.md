@@ -203,3 +203,16 @@ Always. When possible. However there are 3 scenarios where you would use annotat
 1. When we declare a function on one line and initialise it later. 
 2. we want a variable to have a type that can't be inferred
 3. when the function returns any and we need to clarify the value
+
+#### Any Type
+Avoid using any at all costs. The entire idea of typescript is to catch errors. It can't do that if you use an any type. 
+
+### Type inference for functions. 
+- Will only try figure out the return. 
+- you will always have to annotate the inputs. 
+- type inference works on the return - but don't ever use it. 
+
+you always define the return type because if you make a mistake (like leave off a return statement) TS will not pick it up
+
+
+## Objects annotations. 
