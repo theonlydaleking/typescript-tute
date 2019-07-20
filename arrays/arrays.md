@@ -22,4 +22,7 @@ const car = carMakers[0] //car will be of type string
 ## When to use them
 if you ever initialise a blank one. Definitely (otherwise you get 'other')
 if you ever have a mixed array that you only initialise with a single type. 
-(see //flexible types in arrays.md)
+(see //flexible types in arrays.ts)
+if you don't initialise with a type at all, and only put in one type on initialisation, but you need a mixed type later, you'll have to do this explicitly
+
+Dont use them when tuples work: 
