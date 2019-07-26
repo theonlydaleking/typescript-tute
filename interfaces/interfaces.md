@@ -33,3 +33,17 @@ tsPrintVehicle(newCivic)
 ```
 
 at this stage you would then refactor this interface to not be specifically "Vehicle" but something like "canBeSummarised" or "Summarisable" - this is so you can reuse this interface on other unrelated objects.  (as long as that new object has a "summary" function)  
+
+## General Plan With Interfaces 
+!! 
+The General strategy for reusable code in TS is: 
+
+1. Create functions that accept arguments that are typed with interfaces 
+2. Then to call that function, Objects/classes can decide to 'implement' a given interface to work with a function
+
+Not every last function needs an interface, but on most cases, use an interface. 
+
+You use interfaces to _govern_ access to some function. ie: 
+
+![](2019-07-26-20-11-34.png)
+
