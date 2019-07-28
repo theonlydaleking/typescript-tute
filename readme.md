@@ -40,6 +40,10 @@ but you can join these with ts-node.
 
 `ts-node index.ts`
 
+## Parcel Bundler
+
+takes an index.html with a script source with a index.ts
+
 ## Catching errors
 
 The first example is if you write out code like this:
