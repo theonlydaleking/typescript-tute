@@ -20,7 +20,7 @@ vehicle.honk()
 class Car extends Vehicle {
   // A car is a type of vehicle. so it should inherit some shit
   // just like react btw.
-  // You don't actually need super apparently
+  // You don't actually need super here because the parent doesn't have a constructer
   // Also you can overwirte shit like this
   drive(): void {
     console.log('fuckin... merrrrrrrr')
@@ -66,6 +66,15 @@ class ColourfulVehicle {
   // it usually happens this way, but this is verbose.
 }
 
+// Some inheritance stuff
 const colourfulVehicle = new ColourfulVehicle('red')
 
 console.log(colourfulVehicle.colour)
+
+class ColourfulCar extends ColourfulVehicle {
+  constructor(public wheels: number, colour: string) {
+    super(colour)
+  }
+}
+
+const colourfulCar = new ColourfulCar(1, 'red')
