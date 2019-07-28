@@ -44,6 +44,21 @@ but you can join these with ts-node.
 
 takes an index.html with a script source with a index.ts
 
+## Import works
+
+!! Import works here on node, rather than pre node 12
+
+You can use standard libraries, however you'll see an error in ts saying it has type 'any'
+To fix this, it has the concept of a "type definition file"
+
+![definition files](2019-07-28-12-03-00.png)
+
+Sometimes packages include a type definition file for us. `Axios` has a type definition file, things like `faker`. You can tell if there is a definition file by trying to importing it. If you get the error message then it doesn't come with it.
+
+To install them. Use the `@types` module which is called "Definitely Typed"
+
+`@types/faker`
+
 ## Catching errors
 
 The first example is if you write out code like this:
