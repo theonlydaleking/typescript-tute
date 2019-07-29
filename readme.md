@@ -48,6 +48,8 @@ takes an index.html with a script source with a index.ts
 
 !! Import works here on node, rather than pre node 12
 
+convention is to never use `export default` by the way. It just gets confusing when to use {} or not.
+
 You can use standard libraries, however you'll see an error in ts saying it has type 'any'
 To fix this, it has the concept of a "type definition file"
 
@@ -64,6 +66,8 @@ To install them. Use the `@types` module which is called "Definitely Typed"
 These are build by random developers and usually install a `index.d.ts` which will be a bunch of definitions.
 
 The nice thing about this is that it gives you a cmd+click option to go see what the functionality is. This can be used as a type of documentation.
+
+Sometimes the type definition files are actually _more_ updated than the documentation.
 
 ## Catching errors
 
