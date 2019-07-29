@@ -59,6 +59,12 @@ To install them. Use the `@types` module which is called "Definitely Typed"
 
 `@types/faker`
 
+## Type definition files
+
+These are build by random developers and usually install a `index.d.ts` which will be a bunch of definitions.
+
+The nice thing about this is that it gives you a cmd+click option to go see what the functionality is. This can be used as a type of documentation.
+
 ## Catching errors
 
 The first example is if you write out code like this:
