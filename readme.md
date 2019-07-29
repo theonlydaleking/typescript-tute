@@ -63,6 +63,8 @@ To install them. Use the `@types` module which is called "Definitely Typed"
 
 ## Type definition files
 
+!! Get in the habit of reading these.
+
 These are build by random developers (usually [definitely typed](https://github.com/DefinitelyTyped/DefinitelyTyped)) and usually install a `index.d.ts` which will be a bunch of definitions.
 
 The nice thing about this is that it gives you a cmd+click option to go see what the functionality is. This can be used as a type of documentation.
