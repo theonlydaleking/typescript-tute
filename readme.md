@@ -63,11 +63,15 @@ To install them. Use the `@types` module which is called "Definitely Typed"
 
 ## Type definition files
 
-These are build by random developers and usually install a `index.d.ts` which will be a bunch of definitions.
+These are build by random developers (usually [definitely typed](https://github.com/DefinitelyTyped/DefinitelyTyped)) and usually install a `index.d.ts` which will be a bunch of definitions.
 
 The nice thing about this is that it gives you a cmd+click option to go see what the functionality is. This can be used as a type of documentation.
 
 Sometimes the type definition files are actually _more_ updated than the documentation.
+
+### Using 3rd party types in ts whne not imported
+
+You can just install the type definitions (say for google which is added via a `<script>` and it will work in the editor.)
 
 ## Catching errors
 
