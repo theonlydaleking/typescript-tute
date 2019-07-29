@@ -59,21 +59,31 @@ export class CustomMap {
   // You have to have a location property"
   // See the Mappable interface below too.
   addMarkerProperly(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
     })
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      })
+      infoWindow.open(this.googleMap, marker)
+    })
   }
 }
 
-type Mappable = {
+// You should really define interfaces at the top.
+// I put it here because it's related to addMarkerProperly, so you can see it
+// both on the screen at once
+export interface Mappable {
   location: {
     lat: number
     lng: number
   }
+  // You have to have a markerContent function that returns a string
+  markerContent(): string
+  colour: string
 }
-
-google

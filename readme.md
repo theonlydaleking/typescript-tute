@@ -120,6 +120,22 @@ if you do that, then the code in the [[Catching erros]] section will throw 3 err
 
 The nice thing is, if you try and reference some part of an object that isn't there, typescript will tell you.
 
+### Interfaces vs Type Alias
+
+You should always use Interfaces where possible. Type Aliases are used when you join two interfaces or something.
+
+There is an argument to be made that you should use type aliases for react state. Might be worth looking into some examples tho.
+
+## class Whatever _implements_ interfaceName
+
+You use this to get typescript to tell you what is broken in the class. Usually you would only see what is broken at instantiation, which could be in a completely different file.
+
+Export the interface, and import it in the class file. Then use the `implements interfaceName` in the class
+
+```ts
+export class User implements Mappable {}
+```
+
 ## Variable assignment and type annotations
 
 You can assign a type to these by doing:
