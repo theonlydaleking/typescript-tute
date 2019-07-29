@@ -85154,7 +85154,83 @@ function () {
 }();
 
 exports.Company = Company;
-},{"faker":"../../node_modules/faker/index.js"}],"src/index.ts":[function(require,module,exports) {
+},{"faker":"../../node_modules/faker/index.js"}],"src/CustomMap.ts":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true; // In TS, you can use a class to create an instance,
+// Or just use it to refer to a type.
+
+var CustomMap =
+/** @class */
+function () {
+  function CustomMap(lat, lng, containerDiv) {
+    this.googleMap = new google.maps.Map(containerDiv, {
+      zoom: 3,
+      center: {
+        lat: lat,
+        lng: lng
+      }
+    });
+  } // this is a bad way of doing it
+
+
+  CustomMap.prototype.addUserMarker = function (mappable) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+  };
+
+  CustomMap.prototype.addCompanyMarker = function (company) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: company.location.lat,
+        lng: company.location.lng
+      }
+    });
+  }; // Slightly better way:
+  // When you use or (|) typescript goes through and figures out which
+  // properties are on both objects. In this case, the only one that exists
+  // on both is location.
+  // This is still shit tho because every time you want to expand
+  // what you want to use a marker for, you would need to import it
+  // and then have a shitload of or statements in the type.
+
+
+  CustomMap.prototype.addMarkerBadly = function (mappable) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+  }; // Real Solution.
+  // interfaces say "Hey every other object, if you want to show up on the map
+  // You have to have a location property"
+  // See the Mappable interface below too.
+
+
+  CustomMap.prototype.addMarkerProperly = function (mappable) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+  };
+
+  return CustomMap;
+}();
+
+exports.CustomMap = CustomMap;
+google;
+},{}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -85163,18 +85239,20 @@ var User_1 = require("./User");
 
 var Company_1 = require("./Company");
 
+var CustomMap_1 = require("./CustomMap");
+
 var user = new User_1.User();
 var company = new Company_1.Company();
 console.log(user);
-console.log(company);
-var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 3,
-  center: {
-    lat: company.location.lat,
-    lng: company.location.lng
-  }
-});
-},{"./User":"src/User.ts","./Company":"src/Company.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(company); // google maps works when you just create it
+// you don't need to reference with a variable. like const customMap = new CustomMap()
+
+var customMap = new CustomMap_1.CustomMap(company.location.lat, company.location.lng, document.getElementById('map')); // customMap.addUserMarker(user)
+// customMap.addCompanyMarker(company)
+
+customMap.addMarkerProperly(user);
+customMap.addMarkerProperly(company);
+},{"./User":"src/User.ts","./Company":"src/Company.ts","./CustomMap":"src/CustomMap.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
