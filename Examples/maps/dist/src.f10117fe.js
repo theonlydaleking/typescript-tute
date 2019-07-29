@@ -85155,7 +85155,8 @@ function () {
 
 exports.Company = Company;
 },{"faker":"../../node_modules/faker/index.js"}],"src/CustomMap.ts":[function(require,module,exports) {
-"use strict";
+"use strict"; // The crazy thing about TS is that any time you need to show a map again,
+// you can use this file. (Just take the instructive shit out obviously)
 
 exports.__esModule = true; // In TS, you can use a class to create an instance,
 // Or just use it to refer to a type.
@@ -85172,6 +85173,8 @@ function () {
       }
     });
   } // this is a bad way of doing it
+  // You would have to build another one if you wanted to add a company
+  // Then another for like... fuel stations.
 
 
   CustomMap.prototype.addUserMarker = function (mappable) {
@@ -85180,16 +85183,6 @@ function () {
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
-      }
-    });
-  };
-
-  CustomMap.prototype.addCompanyMarker = function (company) {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
       }
     });
   }; // Slightly better way:

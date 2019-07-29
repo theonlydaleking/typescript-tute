@@ -1,3 +1,6 @@
+// The crazy thing about TS is that any time you need to show a map again,
+// you can use this file. (Just take the instructive shit out obviously)
+
 import { User } from './User'
 import { Company } from './Company'
 // In TS, you can use a class to create an instance,
@@ -22,22 +25,14 @@ export class CustomMap {
   }
 
   // this is a bad way of doing it
+  // You would have to build another one if you wanted to add a company
+  // Then another for like... fuel stations.
   addUserMarker(mappable: User | Company): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
-      }
-    })
-  }
-
-  addCompanyMarker(company: Company): void {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
       }
     })
   }
