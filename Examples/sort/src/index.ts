@@ -1,5 +1,10 @@
-const logSomething = () => {
-  console.log('hey homie')
+class Sorter {
+  // Takes a collection of data
+  // Sorts all the stuff inside of it.
+
+  constructor(public collection: number[]) {}
+
+  sort(): void {}
 }
 
-logSomething()
+const sorter = new Sorter([10, 3, -5, 0])
