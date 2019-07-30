@@ -274,4 +274,22 @@ Avoid using any at all costs. The entire idea of typescript is to catch errors. 
 
 you always define the return type because if you make a mistake (like leave off a return statement) TS will not pick it up
 
-## Objects annotations.
+## Working with tsc
+
+```bash
+tsc index.ts
+```
+
+Just creates a index.js file
+
+The best way to do this is to have a `src` and a `build` folder.
+
+You do this with the ts config file:
+
+```bash
+tsc --init
+```
+
+Then you can change the settings in `tsconfig.json` for `outDir` and `rootDir`
+
+Then you could just run `tsc -w` and it will do everything for you (and watch it with the `-w` flag)
