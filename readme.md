@@ -293,3 +293,18 @@ tsc --init
 Then you can change the settings in `tsconfig.json` for `outDir` and `rootDir`
 
 Then you could just run `tsc -w` and it will do everything for you (and watch it with the `-w` flag)
+
+## Type Guards
+
+These are like an if statement for type = string
+they look like this:
+
+```ts
+if (this.whatever instanceof Array) {
+  // this works for everything else. even classes you make
+}
+
+if (typeof this.whatever === 'string') {
+  // this works for primatives (strings, numbers or bool )
+}
+```
