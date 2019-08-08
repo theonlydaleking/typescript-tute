@@ -14,6 +14,36 @@ Some cool things include:
 - Interfaces, which allow you to give objects access to methods if they have a particular 'shape' 
 - The big one is, you really only need to write code once. Say for example the Sort project `examples/sort` It has a bubble sort implementation. You can write this once, then all you have to do is remember the compare and swap methods for any other project. Compare and Swap items is relatively easy compared to remembering a sorting algorithm. 
 
+## Getting Started
+
+I like using concurrently and yarn for running 
+
+```sh
+yarn init
+```
+
+```sh
+tsc --init
+```
+
+then in package.json, have this: 
+
+```json
+{
+  "dependencies": {
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently yarn:start:*"
+  }
+}
+```
+
+
+
 
 ## Typescript Playground
 
