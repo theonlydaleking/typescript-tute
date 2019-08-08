@@ -44,6 +44,7 @@ then in package.json, have this:
 
 then in tsconfig.json just change your `rootdir` and `outdir` to src and build respectively
 
+If you ever get an error on first run, it's because concurrently tried to start:run before the shit was built. Just start it again.
 
 
 
