@@ -42,6 +42,8 @@ then in package.json, have this:
 }
 ```
 
+then in tsconfig.json just change your `rootdir` and `outdir` to src and build respectively
+
 
 
 
