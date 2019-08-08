@@ -348,3 +348,24 @@ export abstract class Sorter {
   }
 }
 ```
+
+### Abstracts vs Interfaces
+
+Interfaces: 
+
+- Sets up a contract between different classes
+- Use when we have very different objects that we want to work together 
+- They are "loosley coupled
+
+Abstract Classes: 
+
+- Sets up a contract between different classes 
+- Use when we are trying to build up a definition of an object
+- strongly coupled classes
+
+When the classes are pretty "closely related" use Abstract Classes. You will know because you'll want to use some methods of a parent class on a child class. 
+ie. child methods cant function without the parent method and vice versa. 
+
+#### When to use each?
+
+Always reach for interfaces first. Unless you have different objects that are closely related. 
