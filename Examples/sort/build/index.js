@@ -24,3 +24,9 @@ linkedList.print();
 // it'd be nice if we could just do numbersCollection.sort()
 // so add a sort method to each class would be nice. For this, use inheritance. 
 // Make sorter the super class
+/**
+ * Now with super sorter - abstract classes
+ */
+var newNumbersCollection = new NumbersCollection_1.NumbersCollection([5, 3, 4, 4]);
+newNumbersCollection.sort();
+console.log(newNumbersCollection.data);

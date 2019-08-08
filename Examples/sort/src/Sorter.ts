@@ -1,3 +1,5 @@
+// a shit way of doing this, look at SuperSort.ts 
+
 interface Sortable {
   length: number
   compare(leftIndex: number, rightIndex: number): boolean

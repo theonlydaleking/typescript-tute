@@ -1,4 +1,5 @@
 "use strict";
+// a shit way of doing this, look at SuperSort.ts 
 Object.defineProperty(exports, "__esModule", { value: true });
 var WorkingSorter = /** @class */ (function () {
     // This however is still bad. Because you need to keep adding shit

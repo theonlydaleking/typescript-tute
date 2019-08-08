@@ -31,3 +31,12 @@ linkedList.print()
 // so add a sort method to each class would be nice. For this, use inheritance. 
 // Make sorter the super class
 
+/** 
+ * Now with super sorter - abstract classes
+ */
+
+ const newNumbersCollection = new NumbersCollection([5,3,4,4])
+
+ newNumbersCollection.sort()
+ console.log(newNumbersCollection.data);
+ 
