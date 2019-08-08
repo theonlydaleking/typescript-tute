@@ -35,8 +35,18 @@ linkedList.print()
  * Now with super sorter - abstract classes
  */
 
- const newNumbersCollection = new NumbersCollection([5,3,4,4])
+const newNumbersCollection = new NumbersCollection([5,3,4,4])
+newNumbersCollection.sort()
+console.log(newNumbersCollection.data);
 
- newNumbersCollection.sort()
- console.log(newNumbersCollection.data);
+const newCharactersCollection = new CharactersCollection("whatever")
+newCharactersCollection.sort()
+console.log(newCharactersCollection.data)
+
+const newLinkedList = new LinkedList()
+newLinkedList.add(500)
+newLinkedList.add(400)
+newLinkedList.add(5)
+newLinkedList.sort()
+newLinkedList.print()
  

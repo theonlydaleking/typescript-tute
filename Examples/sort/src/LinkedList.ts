@@ -1,3 +1,6 @@
+import {Sorter} from './SuperSort'
+
+
 class Node {
   // don't put this in the construtor because it gets figured out later 
   next: Node | null = null
@@ -7,7 +10,7 @@ class Node {
 }
 
 
-export class LinkedList {
+export class LinkedList extends Sorter {
   head: Node | null = null 
 
   add(data: number): void {
