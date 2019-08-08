@@ -9,6 +9,12 @@ The typescript system:
 
 Everything runs through the TS compiler, spits out JS. We then run it.
 
+Some cool things include:
+
+- Interfaces, which allow you to give objects access to methods if they have a particular 'shape' 
+- The big one is, you really only need to write code once. Say for example the Sort project `examples/sort` It has a bubble sort implementation. You can write this once, then all you have to do is remember the compare and swap methods for any other project. Compare and Swap items is relatively easy compared to remembering a sorting algorithm. 
+
+
 ## Typescript Playground
 
 [Go here](http://www.typescriptlang.org/play/index.html) to have a go with a TS playground
@@ -116,9 +122,14 @@ then you call it with
 const todo = response.data as Todo
 ```
 
+
+
 if you do that, then the code in the [[Catching erros]] section will throw 3 errors.
 
 The nice thing is, if you try and reference some part of an object that isn't there, typescript will tell you.
+
+### Interfaces - Why: 
+It's like a contract that says "If your data has these properties, then you can have access to these methods.
 
 ### Interfaces vs Type Alias
 
