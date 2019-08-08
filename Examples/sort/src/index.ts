@@ -26,3 +26,8 @@ const linkedsorter = new WorkingSorter(linkedList)
 linkedsorter.sort()
 linkedList.print()
 
+// issue is that every time we want to do this, you have to create a collection, instantiate the sorter, then sort. 
+// it'd be nice if we could just do numbersCollection.sort()
+// so add a sort method to each class would be nice. For this, use inheritance. 
+// Make sorter the super class
+
