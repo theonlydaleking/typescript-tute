@@ -319,3 +319,32 @@ if (typeof this.whatever === 'string') {
   // this works for primatives (strings, numbers or bool )
 }
 ```
+
+
+## Abstract Classes 
+Used for parent classes that will need access to a child's methods. 
+
+- They can never be instantiated with `const x = new X` 
+- they can only ever be used as a parent class
+- Can obtain real implementations (See SuperSort in examples/sort)
+- implemented methods can refer to other methods that don't exist yet. You just have to write them out in the abstract class body. 
+- Can make child classes promise that they'll all have a pareticular set of methods or data structure. 
+
+
+they look like this: 
+
+```ts
+// Note the abstract keywords
+export abstract class Sorter {
+
+  // abstract properties
+  abstract length: number
+
+  // abstract methods
+  abstract compare(i: number):bool 
+
+  someMethod(): void {
+    console.log("whatever)
+  }
+}
+```
