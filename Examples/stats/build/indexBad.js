@@ -4,7 +4,8 @@
  * There is a better way in the index.ts file
  * Here are the issues:
  *
- * Match[5] === 'H' for eg. is extremely unclear for other engineers to look at it.
+ * Match[5] === 'H' for eg. is extremely unclear for other engineers to look at it. (use enums)
+ * Source of data is hardcoded - currently fs. (So make it a CSV file Read class)
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
