@@ -1,5 +1,43 @@
 # Typescript
 
+
+
+- [Typescript](#typescript)
+  - [Getting Started](#getting-started)
+  - [Typescript Playground](#typescript-playground)
+  - [Objective](#objective)
+  - [Setup](#setup)
+  - [ts-node](#ts-node)
+  - [Parcel Bundler](#parcel-bundler)
+  - [Import works](#import-works)
+  - [Type definition files](#type-definition-files)
+    - [Using 3rd party types in ts whne not imported](#using-3rd-party-types-in-ts-whne-not-imported)
+  - [Catching errors](#catching-errors)
+  - [Interfaces](#interfaces)
+    - [Interfaces - Why:](#interfaces---why)
+    - [Interfaces vs Type Alias](#interfaces-vs-type-alias)
+  - [class Whatever _implements_ interfaceName](#class-whatever-implements-interfacename)
+  - [Variable assignment and type annotations](#variable-assignment-and-type-annotations)
+  - [Features](#features)
+    - [Types](#types)
+    - [Typescript in vscode](#typescript-in-vscode)
+    - [Type annotations vs Inference](#type-annotations-vs-inference)
+    - [annotations for functions](#annotations-for-functions)
+    - [Type inference](#type-inference)
+    - [When to use inference?](#when-to-use-inference)
+      - [Any Type](#any-type)
+    - [Type inference for functions.](#type-inference-for-functions)
+  - [Working with tsc](#working-with-tsc)
+  - [Type Guards](#type-guards)
+  - [Abstract Classes](#abstract-classes)
+    - [Abstracts vs Interfaces](#abstracts-vs-interfaces)
+      - [When to use each?](#when-to-use-each)
+  - [Enums](#enums)
+    - [When to use them](#when-to-use-them)
+
+
+
+
 The typescript system:
 
 - helps us catch errors _during_ development (in javascript, the only way to find bugs is to run the code.)
@@ -402,3 +440,30 @@ ie. child methods cant function without the parent method and vice versa.
 #### When to use each?
 
 Always reach for interfaces first. Unless you have different objects that are closely related. 
+
+## Enums 
+
+enumeration - they are essentially an object that store closely related values. In the 'stats' project, we use it to store the list of possible match outcomes (win, lose, draw)
+
+```ts
+enum MatchResult {
+  HomeWin = 'H',
+  AwayWin = 'A',
+  Draw = 'D'
+}
+
+// reference them with
+MatchResult.Homewin // "H'
+
+// Type annotate them like this 
+const someFunction = (): MatchResult => {
+  ...
+}
+```
+
+The purpose of them, more than anything else, is _signaling to other engineers_ that this is a collection of _very closely related values_ 
+
+### When to use them
+
+- Just when you want to signal to other engineers that they are closely related values. 
+- You can't change them at runtime so you really only use them for when you know all the properties ahead of time. 
