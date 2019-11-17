@@ -38,3 +38,29 @@ class ArrayOfAnyNumbers {
 }
 
 // <T> just is like an argument, it can be anything like <TypeInThisClass>
+
+// Example of Generix with Functions:
+
+const printStrings = (arr: string[]): void => {
+  arr.forEach(element => {
+    console.log(element);
+  });
+};
+
+const printNumbers = (arr: number[]): void => {
+  arr.forEach(element => {
+    console.log(element);
+  });
+};
+
+// Instead of doing that you can:
+
+const printAnything = <T>(arr: T[]): void => {
+  arr.forEach(element => {
+    console.log(element);
+  });
+};
+
+// However it is recomended you annotate it yourself.
+// This will stop other devs from accidentally passing in numbers
+printAnything<string>(["a", "b"]);
