@@ -1,7 +1,5 @@
 # Typescript
 
-
-
 - [Typescript](#typescript)
   - [Getting Started](#getting-started)
   - [Typescript Playground](#typescript-playground)
@@ -18,6 +16,8 @@
     - [Interfaces vs Type Alias](#interfaces-vs-type-alias)
   - [class Whatever _implements_ interfaceName](#class-whatever-implements-interfacename)
   - [Variable assignment and type annotations](#variable-assignment-and-type-annotations)
+  - [Classes](#classes)
+    - [Constructors](#constructors)
   - [Features](#features)
     - [Types](#types)
     - [Typescript in vscode](#typescript-in-vscode)
@@ -35,9 +35,6 @@
   - [Enums](#enums)
     - [When to use them](#when-to-use-them)
 
-
-
-
 The typescript system:
 
 - helps us catch errors _during_ development (in javascript, the only way to find bugs is to run the code.)
@@ -49,12 +46,12 @@ Everything runs through the TS compiler, spits out JS. We then run it.
 
 Some cool things include:
 
-- Interfaces, which allow you to give objects access to methods if they have a particular 'shape' 
-- The big one is, you really only need to write code once. Say for example the Sort project `examples/sort` It has a bubble sort implementation. You can write this once, then all you have to do is remember the compare and swap methods for any other project. Compare and Swap items is relatively easy compared to remembering a sorting algorithm. 
+- Interfaces, which allow you to give objects access to methods if they have a particular 'shape'
+- The big one is, you really only need to write code once. Say for example the Sort project `examples/sort` It has a bubble sort implementation. You can write this once, then all you have to do is remember the compare and swap methods for any other project. Compare and Swap items is relatively easy compared to remembering a sorting algorithm.
 
 ## Getting Started
 
-I like using concurrently and yarn for running 
+I like using concurrently and yarn for running
 
 ```sh
 yarn init
@@ -64,7 +61,7 @@ yarn init
 tsc --init
 ```
 
-then in package.json, have this: 
+then in package.json, have this:
 
 ```json
 {
@@ -83,8 +80,6 @@ then in package.json, have this:
 then in tsconfig.json just change your `rootdir` and `outdir` to src and build respectively
 
 If you ever get an error on first run, it's because concurrently tried to start:run before the shit was built. Just start it again.
-
-
 
 ## Typescript Playground
 
@@ -157,9 +152,9 @@ You can just install the type definitions (say for google which is added via a `
 The first example is if you write out code like this:
 
 ```js
-const ID = todo.ID
-const title = todo.title
-const finished = todo.finished
+const ID = todo.ID;
+const title = todo.title;
+const finished = todo.finished;
 ```
 
 when the json data is actually:
@@ -193,13 +188,12 @@ then you call it with
 const todo = response.data as Todo
 ```
 
-
-
 if you do that, then the code in the [[Catching erros]] section will throw 3 errors.
 
 The nice thing is, if you try and reference some part of an object that isn't there, typescript will tell you.
 
-### Interfaces - Why: 
+### Interfaces - Why:
+
 It's like a contract that says "If your data has these properties, then you can have access to these methods.
 
 ### Interfaces vs Type Alias
@@ -230,30 +224,58 @@ which means, if you mix up the variables, it will tell you.
 
 ```ts
 interface Todo {
-  id: number
-  title: string
-  completed: boolean
+  id: number;
+  title: string;
+  completed: boolean;
 }
 
 axios.get(url).then(response => {
-  const todo = response.data as Todo
+  const todo = response.data as Todo;
 
-  const id = todo.id
-  const title = todo.title
-  const completed = todo.completed
+  const id = todo.id;
+  const title = todo.title;
+  const completed = todo.completed;
 
-  logTodo(id, completed, title) // this will fail because completed isn't a string
-})
+  logTodo(id, completed, title); // this will fail because completed isn't a string
+});
 
 const logTodo = (id: number, title: string, completed: boolean) => {
   console.log(`
   The Todo with ID: ${id}
   has a title of: ${title},
-  is it finished? ${completed}`)
-}
+  is it finished? ${completed}`);
+};
 ```
 
 This will throw an error because you mixed up the variables.
+
+## Classes
+
+### Constructors
+
+When you create a class, You need to take the argument name and set it to something like `this.argument` like so:
+
+```ts
+class TestClass {
+  public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+```
+
+but you can just do it with this shorthand way:
+
+```ts
+class TestClass {
+  constructor(public name: string);
+}
+```
+
+Which then automatically gives you access to `TestClass.name` from outside the class, and `this.name` from inside it.
+
+it also works for private.
 
 ## Features
 
@@ -285,13 +307,13 @@ Why do we care about types?
 If you hover over a variable (ie date in this)
 
 ```ts
-const date = new Date()
+const date = new Date();
 ```
 
 if you hover over the variable, you will get something like:
 
 ```ts
-const today: Date
+const today: Date;
 ```
 
 This is telling you that the variable is of type `Date`
@@ -305,14 +327,14 @@ Annotations are when we're telling TS what the type is, Inference is when TS tri
 You can write all of these without annotations. This is inference.
 
 ```ts
-let apples: number = 5
+let apples: number = 5;
 
-let speed: string = 'fast'
-let hasName: boolean = true
+let speed: string = "fast";
+let hasName: boolean = true;
 
 // its interesting here because type is the same as the value
-let nothingMuch: null = null
-let nothing: undefined = undefined
+let nothingMuch: null = null;
+let nothing: undefined = undefined;
 ```
 
 if you remomved all the annotations, ts would still be fine with it.
@@ -324,8 +346,8 @@ they are nasty as fuck
 ```ts
 // Function
 const logNumber: (i: number) => void = (i: number) => {
-  console.log(i)
-}
+  console.log(i);
+};
 ```
 
 thats nasty - where is the bloody type annotation finishing? and the function starting?
@@ -386,23 +408,22 @@ if (this.whatever instanceof Array) {
   // this works for everything else. even classes you make
 }
 
-if (typeof this.whatever === 'string') {
+if (typeof this.whatever === "string") {
   // this works for primatives (strings, numbers or bool )
 }
 ```
 
+## Abstract Classes
 
-## Abstract Classes 
-Used for parent classes that will need access to a child's methods. 
+Used for parent classes that will need access to a child's methods.
 
-- They can never be instantiated with `const x = new X` 
+- They can never be instantiated with `const x = new X`
 - they can only ever be used as a parent class
 - Can obtain real implementations (See SuperSort in examples/sort)
-- implemented methods can refer to other methods that don't exist yet. You just have to write them out in the abstract class body. 
-- Can make child classes promise that they'll all have a pareticular set of methods or data structure. 
+- implemented methods can refer to other methods that don't exist yet. You just have to write them out in the abstract class body.
+- Can make child classes promise that they'll all have a pareticular set of methods or data structure.
 
-
-they look like this: 
+they look like this:
 
 ```ts
 // Note the abstract keywords
@@ -412,7 +433,7 @@ export abstract class Sorter {
   abstract length: number
 
   // abstract methods
-  abstract compare(i: number):bool 
+  abstract compare(i: number):bool
 
   someMethod(): void {
     console.log("whatever)
@@ -422,26 +443,26 @@ export abstract class Sorter {
 
 ### Abstracts vs Interfaces
 
-Interfaces: 
+Interfaces:
 
 - Sets up a contract between different classes
-- Use when we have very different objects that we want to work together 
+- Use when we have very different objects that we want to work together
 - They are "loosley coupled
 
-Abstract Classes: 
+Abstract Classes:
 
-- Sets up a contract between different classes 
+- Sets up a contract between different classes
 - Use when we are trying to build up a definition of an object
 - strongly coupled classes
 
-When the classes are pretty "closely related" use Abstract Classes. You will know because you'll want to use some methods of a parent class on a child class. 
-ie. child methods cant function without the parent method and vice versa. 
+When the classes are pretty "closely related" use Abstract Classes. You will know because you'll want to use some methods of a parent class on a child class.
+ie. child methods cant function without the parent method and vice versa.
 
 #### When to use each?
 
-Always reach for interfaces first. Unless you have different objects that are closely related. 
+Always reach for interfaces first. Unless you have different objects that are closely related.
 
-## Enums 
+## Enums
 
 enumeration - they are essentially an object that store closely related values. In the 'stats' project, we use it to store the list of possible match outcomes (win, lose, draw)
 
@@ -455,15 +476,15 @@ enum MatchResult {
 // reference them with
 MatchResult.Homewin // "H'
 
-// Type annotate them like this 
+// Type annotate them like this
 const someFunction = (): MatchResult => {
   ...
 }
 ```
 
-The purpose of them, more than anything else, is _signaling to other engineers_ that this is a collection of _very closely related values_ 
+The purpose of them, more than anything else, is _signaling to other engineers_ that this is a collection of _very closely related values_
 
 ### When to use them
 
-- Just when you want to signal to other engineers that they are closely related values. 
-- You can't change them at runtime so you really only use them for when you know all the properties ahead of time. 
+- Just when you want to signal to other engineers that they are closely related values.
+- You can't change them at runtime so you really only use them for when you know all the properties ahead of time.
