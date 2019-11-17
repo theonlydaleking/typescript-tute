@@ -12,7 +12,12 @@ class ArrayOfAnything<T> {
 
 new ArrayOfAnything<string>(["a", "b", "c"]);
 
-// Rather than:
+// Also Type inference works here too:
+
+const arr = new ArrayOfAnything(["a", "b", "c"]);
+// Now mouse over arr and it'll say type <string>
+
+// You can do this rather than:
 
 class ArrayOfAnyStrings {
   constructor(public collection: string[]) {}
